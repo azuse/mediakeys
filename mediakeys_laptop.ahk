@@ -61,4 +61,25 @@ t::^t
 
 !w::SendInput, ^{w}
 Launch_App2::^+h 
+
+#If IsTargetApp()
+
+XButton1::^+Tab  ; 鼠标侧键1 映射为 Ctrl+Shift+Tab
+XButton2::^Tab   ; 鼠标侧键2 映射为 Ctrl+Tab
+
+#If
+
+IsTargetApp() {
+    WinGet, ProcessName, ProcessName, A
+    if (ProcessName = "chrome.exe"
+     || ProcessName = "Postman.exe"
+     || ProcessName = "feishu.exe"
+     || ProcessName = "Code.exe"
+     || ProcessName = "Code - Insiders.exe"
+     || ProcessName = "Cursor.exe") {
+        return true
+    }
+    return false
+}
+
 ;================= END SCRIPT ===================
